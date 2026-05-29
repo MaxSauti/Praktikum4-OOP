@@ -16,8 +16,8 @@ public class Feld
     
     // Die Tiefe und die Breite des Feldes
     private int tiefe, breite;
-    // Speicher für die Tiere
-    private Tier[][] feld;
+    // Speicher fï¿½r die Tiere
+    private Akteur[][] feld;
 
     /**
      * Erzeuge ein Feld mit den angegebenen Dimensionen.
@@ -28,11 +28,11 @@ public class Feld
     {
         this.tiefe = tiefe;
         this.breite = breite;
-        feld = new Tier[tiefe][breite];
+        feld = new Akteur[tiefe][breite];
     }
     
     /**
-     * Räume das Feld.
+     * Rï¿½ume das Feld.
      */
     public void raeumen()
     {
@@ -47,54 +47,54 @@ public class Feld
      * Platziere das gegebene Tier an der angegebenen Position.
      * Wenn an der Position bereits ein Tier eingetragen ist,
      * geht es verloren.
-     * @param tier das Tier, das platziert werden soll.
+     * @param akteur das Tier, das platziert werden soll.
      */
-    public void platziere(Tier tier)
+    public void platziere(Akteur akteur)
     {
-        Position position = tier.gibPosition();
-        feld[position.gibZeile()][position.gibSpalte()] = tier;
+        Position position = akteur.gibPosition();
+        feld[position.gibZeile()][position.gibSpalte()] = akteur;
     }
     
     /**
      * Liefere das Tier an der angegebenen Position, falls vorhanden.
-     * @param position die gewünschte Position.
+     * @param position die gewï¿½nschte Position.
      * @return das Tier an der angegebenen Position oder null, wenn
      *         dort kein Tier ist.
      */
-    public Tier gibObjektAn(Position position)
+    public Akteur gibObjektAn(Position position)
     {
         return gibObjektAn(position.gibZeile(), position.gibSpalte());
     }
     
     /**
      * Liefere das Tier an der angegebenen Position, falls vorhanden.
-     * @param zeile die gewünschte Zeile.
-     * @param spalte die gewünschte Spalte.
+     * @param zeile die gewï¿½nschte Zeile.
+     * @param spalte die gewï¿½nschte Spalte.
      * @return das Tier an der angegebenen Position oder null, wenn
      *         dort kein Tier ist.
      */
-    public Tier gibObjektAn(int zeile, int spalte)
+    public Akteur gibObjektAn(int zeile, int spalte)
     {
         return feld[zeile][spalte];
     }
     
     /**
-     * Wähle zufällig eine der Positionen, die an die gegebene Position
+     * Wï¿½hle zufï¿½llig eine der Positionen, die an die gegebene Position
      * angrenzen, oder die gegebene Position selbst.
-     * Die gelieferte Position liegt innerhalb der gültigen Grenzen
+     * Die gelieferte Position liegt innerhalb der gï¿½ltigen Grenzen
      * dieses Feldes.
-     * @param position die Position, von der ein Nachbar zu wählen ist.
-     * @return eine gültige Position innerhalb dieses Feldes. Das kann
+     * @param position die Position, von der ein Nachbar zu wï¿½hlen ist.
+     * @return eine gï¿½ltige Position innerhalb dieses Feldes. Das kann
      *         auch die gegebene Position selbst sein.
      */
     public Position zufaelligeNachbarposition(Position position)
     {
         int zeile = position.gibZeile();
         int spalte = position.gibSpalte();
-        // Zufällig eine Abweichung von -1, 0 oder +1 für Zeile und Spalte wählen.
+        // Zufï¿½llig eine Abweichung von -1, 0 oder +1 fï¿½r Zeile und Spalte wï¿½hlen.
         int naechsteZeile = zeile + rand.nextInt(3) - 1;
         int naechsteSpalte = spalte + rand.nextInt(3) - 1;
-        // Prüfen, ob die neue Position außerhalb der Feldgrenzen liegt.
+        // Prï¿½fen, ob die neue Position auï¿½erhalb der Feldgrenzen liegt.
         if(naechsteZeile < 0 || naechsteZeile >= tiefe
            || naechsteSpalte < 0 || naechsteSpalte >= breite) {
             return position;
@@ -112,9 +112,9 @@ public class Feld
      * finden. Wenn es keine gibt, liefere die gegebene Position, wenn
      * sie selbst frei ist. Ansonsten liefere null.
      * Die gelieferte Position liegt innerhalb der Feldgrenzen.
-     * @param position die Position, für die eine Nachbarposition
+     * @param position die Position, fï¿½r die eine Nachbarposition
      *                 zu liefern ist.
-     * @return eine gültige Position innerhalb der Feldgrenzen. Das
+     * @return eine gï¿½ltige Position innerhalb der Feldgrenzen. Das
      *         kann die gegebene Position selbst sein oder null, wenn
      *         alle Nachbarpositionen und die Position selbst belegt sind.
      */
@@ -127,7 +127,7 @@ public class Feld
                 return naechste;
             }
         }
-        // Prüfen, ob die gegebene Position selbst frei ist.
+        // Prï¿½fen, ob die gegebene Position selbst frei ist.
         if(feld[position.gibZeile()][position.gibSpalte()] == null) {
             return position;
         } 
@@ -137,11 +137,11 @@ public class Feld
     }
 
     /**
-     * Erzeuge einen Iterator über eine gemischte Liste von Nachbarpositionen
-     * zu der gegebenen Position. Diese Liste enthält nicht die gegebene 
+     * Erzeuge einen Iterator ï¿½ber eine gemischte Liste von Nachbarpositionen
+     * zu der gegebenen Position. Diese Liste enthï¿½lt nicht die gegebene 
      * Position selbst. Alle Positionen liegen innerhalb des Feldes.
-     * @param position die Position, für die Nachbarpositionen zu liefern sind.
-     * @return ein Iterator über Nachbarpositionen zur gegebenen Position.
+     * @param position die Position, fï¿½r die Nachbarpositionen zu liefern sind.
+     * @return ein Iterator ï¿½ber Nachbarpositionen zur gegebenen Position.
      */
     public Iterator nachbarpositionen(Position position)
     {

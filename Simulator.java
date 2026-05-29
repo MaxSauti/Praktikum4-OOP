@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.awt.Color;
 
 /**
- * Ein einfacher Jäger-Beute-Simulator, basierend auf einem
- * Feld mit Füchsen und Hasen.
+ * Ein einfacher Jï¿½ger-Beute-Simulator, basierend auf einem
+ * Feld mit Fï¿½chsen und Hasen.
  * 
  * @author David J. Barnes and Michael Kolling
  * @version 2003-04-13
@@ -15,15 +15,15 @@ import java.awt.Color;
 public class Simulator
 {
     // Die privaten static final Variablen definieren
-    // Konfigurationsinformationen für die Simulation.
-    // Die Standardbreite für ein Feld.
+    // Konfigurationsinformationen fï¿½r die Simulation.
+    // Die Standardbreite fï¿½r ein Feld.
     private static final int STANDARD_BREITE = 50;
-    // Die Standardtiefe für ein Feld.
+    // Die Standardtiefe fï¿½r ein Feld.
     private static final int STANDARD_TIEFE = 50;
-    // Die Wahrscheinlichkeit für die Geburt eines Fuchses an
+    // Die Wahrscheinlichkeit fï¿½r die Geburt eines Fuchses an
     // einer beliebigen Position im Feld.
     private static final double FUCHSGEBURT_WAHRSCHEINLICH = 0.02;
-    // Die Wahrscheinlichkeit für die Geburt eines Fuchses an
+    // Die Wahrscheinlichkeit fï¿½r die Geburt eines Fuchses an
     // einer beliebigen Position im Feld.
     private static final double HASENGEBURT_WAHRSCHEINLICH = 0.08;    
 
@@ -33,7 +33,7 @@ public class Simulator
     private List neueTiere;
     // Der aktuelle Zustand des Feldes
     private Feld feld;
-    // Zweites Feld, mit dem der nächste Schritt erzeugt wird
+    // Zweites Feld, mit dem der nï¿½chste Schritt erzeugt wird
     private Feld naechstesFeld;
     // Der aktuelle Schritt der Simulation
     private int schritt;
@@ -48,7 +48,7 @@ public class Simulator
 
     
     /**
-     * Erzeuge ein Simulationsfeld mit einer Standardgröße.
+     * Erzeuge ein Simulationsfeld mit einer Standardgrï¿½ï¿½e.
      */
     public Simulator()
     {
@@ -56,14 +56,14 @@ public class Simulator
     }
     
     /**
-     * Erzeuge ein Simulationsfeld mit der gegebenen Größe.
-     * @param tiefe die Tiefe des Feldes (muss größer als Null sein).
-     * @param breite die Breite des Feldes (muss größer als Null sein).
+     * Erzeuge ein Simulationsfeld mit der gegebenen Grï¿½ï¿½e.
+     * @param tiefe die Tiefe des Feldes (muss grï¿½ï¿½er als Null sein).
+     * @param breite die Breite des Feldes (muss grï¿½ï¿½er als Null sein).
      */
     public Simulator(int tiefe, int breite)
     {
         if(breite <= 0 || tiefe <= 0) {
-            System.out.println("Abmessungen müssen größer als Null sein.");
+            System.out.println("Abmessungen mï¿½ssen grï¿½ï¿½er als Null sein.");
             System.out.println("Benutze Standardwerte.");
             tiefe = STANDARD_TIEFE;
             breite = STANDARD_BREITE;
@@ -73,17 +73,18 @@ public class Simulator
         feld = new Feld(tiefe, breite);
         naechstesFeld = new Feld(tiefe, breite);
 
-        // Eine Ansicht der Zustände aller Positionen im Feld erzeugen.
+        // Eine Ansicht der Zustï¿½nde aller Positionen im Feld erzeugen.
         ansicht = new Simulationsansicht(tiefe, breite);
         ansicht.setzeFarbe(Fuchs.class, Color.blue);
         ansicht.setzeFarbe(Hase.class, Color.orange);
+        ansicht.setzeFarbe(Jaeger.class, Color.red);
         
-        // Einen gültigen Startzustand einnehmen.
+        // Einen gï¿½ltigen Startzustand einnehmen.
         zuruecksetzen();
     }
     
     /**
-     * Starte die Simulation vom aktuellen Zustand aus für einen längeren
+     * Starte die Simulation vom aktuellen Zustand aus fï¿½r einen lï¿½ngeren
      * Zeitraum, etwa 500 Schritte.
      */
     public void starteLangeSimulation()
@@ -92,7 +93,7 @@ public class Simulator
     }
     
     /**
-     * Führe vom aktuellen Zustand aus die angegebene Anzahl an
+     * Fï¿½hre vom aktuellen Zustand aus die angegebene Anzahl an
      * Simulationsschritten durch.
      * Brich vorzeitig ab, wenn die Simulation nicht mehr aktiv ist.
      */
@@ -104,7 +105,7 @@ public class Simulator
     }
     
     /**
-     * Führe einen einzelnen Simulationsschritt aus:
+     * Fï¿½hre einen einzelnen Simulationsschritt aus:
      * Durchlaufe alle Feldpositionen und aktualisiere den 
      * Zustand jedes Fuchses und Hasen.
      */
@@ -123,10 +124,10 @@ public class Simulator
                 iter.remove();   // totes Tier entfernen
             }
         }
-        // neu geborene Tiere in die Liste der Tiere einfügen.
+        // neu geborene Tiere in die Liste der Tiere einfï¿½gen.
         tiere.addAll(neueTiere);
         
-        // feld und nächstesFeld am Ende des Schritts austauschen.
+        // feld und nï¿½chstesFeld am Ende des Schritts austauschen.
         Feld temp = feld;
         feld = naechstesFeld;
         naechstesFeld = temp;
@@ -137,7 +138,7 @@ public class Simulator
     }
         
     /**
-     * Setze die Simulation an den Anfang zurück.
+     * Setze die Simulation an den Anfang zurï¿½ck.
      */
     public void zuruecksetzen()
     {
@@ -152,7 +153,7 @@ public class Simulator
     }
     
     /**
-     * Bevölkere das Feld mit Füchsen und Hasen.
+     * Bevï¿½lkere das Feld mit Fï¿½chsen und Hasen.
      */
     private void bevoelkere(Feld feld)
     {
@@ -175,6 +176,10 @@ public class Simulator
                 // ansonsten die Position leer lassen
             }
         }
+        Jaeger hunt = new Jaeger();
+        hunt.setzePosition(10, 10);
+        tiere.add(hunt);
+        feld.platziere(hunt);
         Collections.shuffle(tiere);
     }
 }
