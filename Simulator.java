@@ -43,7 +43,7 @@ public class Simulator
     public static void main (String[] args)
     {
     	Simulator sim = new Simulator();
-    	sim.starteLangeSimulation();
+        sim.starteLangeSimulation();
     }
 
     
@@ -101,6 +101,11 @@ public class Simulator
     {
         for(int schritt = 1; schritt <= schritte && ansicht.istAktiv(feld); schritt++) {
             simuliereEinenSchritt();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ignored) {
+            }
+
         }
     }
     
@@ -116,9 +121,9 @@ public class Simulator
         
         // alle Tiere agieren lassen
         for(Iterator iter = tiere.iterator(); iter.hasNext(); ) {
-            Tier tier = (Tier)iter.next();
-            if(tier.istLebendig()) {
-                tier.agiere(feld, naechstesFeld, neueTiere);
+            Akteur akteur = (Akteur)iter.next();
+            if(akteur.istLebendig()) {
+                akteur.agiere(feld, naechstesFeld, neueTiere);
             }
             else {
                 iter.remove();   // totes Tier entfernen
@@ -172,12 +177,14 @@ public class Simulator
                     hase.setzePosition(zeile, spalte);
                     tiere.add(hase);
                     feld.platziere(hase);
+                } else {
+
                 }
                 // ansonsten die Position leer lassen
             }
         }
         Jaeger hunt = new Jaeger();
-        hunt.setzePosition(10, 10);
+        hunt.setzePosition(30, 30);
         tiere.add(hunt);
         feld.platziere(hunt);
         Collections.shuffle(tiere);

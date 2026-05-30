@@ -4,6 +4,11 @@ public abstract class Akteur {
 
     // Die Position dieses Tieres.
     private Position position;
+    private boolean lebendig;
+
+    public Akteur(){
+        lebendig = true;
+    }
 
     /**
      * Lasse dieses Tier agieren - es soll das tun, was
@@ -38,5 +43,22 @@ public abstract class Akteur {
     public void setzePosition(Position position)
     {
         this.position = position;
+    }
+
+    /**
+     * Pr�fe, ob dieses Tier noch lebendig ist.
+     * @return true wenn dieses Tier noch lebendig ist.
+     */
+    public boolean istLebendig()
+    {
+        return lebendig;
+    }
+
+    /**
+     * Signalisiere diesem Tier, dass es gestorben ist.   :-(
+     */
+    public void setzeGestorben()
+    {
+        lebendig = false;
     }
 }

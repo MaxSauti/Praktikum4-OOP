@@ -12,8 +12,7 @@ public abstract class Tier extends Akteur
 {
     // Das Alter dieses Tieres.
     private int alter;
-    // Ist dieses Tier noch lebendig?
-    private boolean lebendig;
+
 
     /**
      * Erzeuge ein Tier mit Alter Null (ein Neugeborenes).
@@ -21,26 +20,8 @@ public abstract class Tier extends Akteur
     public Tier()
     {
         alter = 0;
-        lebendig = true;
     }
 
-    
-    /**
-     * Pr�fe, ob dieses Tier noch lebendig ist.
-     * @return true wenn dieses Tier noch lebendig ist.
-     */
-    public boolean istLebendig()
-    {
-        return lebendig;
-    }
-
-    /**
-     * Signalisiere diesem Tier, dass es gestorben ist.   :-(
-     */
-    public void setzeGestorben()
-    {
-        lebendig = false;
-    }
     
     /**
      * Liefere das Alter dieses Tieres.
