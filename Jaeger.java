@@ -26,7 +26,7 @@ public class Jaeger extends Akteur{
             dead[i] = aktuellesFeld.zufaelligeNachbarposition(gibPosition());
         }
 
-        Iterator tmp = aktuellesFeld.nachbarpositionen(gibPosition());
+        Iterator tmp = aktuellesFeld.nachbarnInRange(gibPosition(), range);
         while (tmp.hasNext()){
             Position pos = (Position) tmp.next();
             if (pos != null) {

@@ -3,7 +3,7 @@ import java.util.Random;
 
 /**
  * Ein einfaches Modell eines Hasen.
- * Ein Hase altert, bewegt sich, gebärt Nachwuchs und stirbt.
+ * Ein Hase altert, bewegt sich, gebï¿½rt Nachwuchs und stirbt.
  * 
  * @author David J. Barnes and Michael Kolling
  * @version 2003-04-16
@@ -12,13 +12,13 @@ public class Hase extends Tier
 {
     // Eigenschaften aller Hasen (statische Datenfelder).
 
-    // Das Alter, in dem ein Hase gebärfähig wird.
+    // Das Alter, in dem ein Hase gebï¿½rfï¿½hig wird.
     private static final int GEBAER_ALTER = 5;
-    // Das Höchstalter eines Hasen.
+    // Das Hï¿½chstalter eines Hasen.
     private static final int MAX_ALTER = 50;
-    // Die Wahrscheinlichkeit, mit der ein Hase Nachwuchs gebärt.
+    // Die Wahrscheinlichkeit, mit der ein Hase Nachwuchs gebï¿½rt.
     private static final double GEBAER_WAHRSCHEINLICHKEIT = 0.15;
-    // Die maximale Größe eines Wurfes (Anzahl der Jungen)
+    // Die maximale Grï¿½ï¿½e eines Wurfes (Anzahl der Jungen)
     private static final int MAX_WURFGROESSE = 5;
     // Ein Zufallsgenerator, der die Geburten beeinflusst.
     private static final Random rand = new Random();
@@ -27,8 +27,8 @@ public class Hase extends Tier
     
     /**
      * Erzeuge einen neuen Hasen. Ein Hase kann das Alter 0 
-     *(neu geboren) oder ein zufälliges Alter haben.
-     * @param zufaelligesAlter soll der Hase ein zufälliges Alter haben?
+     *(neu geboren) oder ein zufï¿½lliges Alter haben.
+     * @param zufaelligesAlter soll der Hase ein zufï¿½lliges Alter haben?
      */
     public Hase(boolean zufaelligesAlter)
     {
@@ -39,9 +39,9 @@ public class Hase extends Tier
     }
     
     /**
-     * Das was ein Hase die meiste Zeit tut - er läuft herum.
-     * Manchmal gebärt er Nachwuchs und irgendwann stirbt er
-     * an Altersschwäche.
+     * Das was ein Hase die meiste Zeit tut - er lï¿½uft herum.
+     * Manchmal gebï¿½rt er Nachwuchs und irgendwann stirbt er
+     * an Altersschwï¿½che.
      */
     public void agiere(Feld feld, Feld naechstesFeld, List neueTiere)
     {
@@ -55,21 +55,21 @@ public class Hase extends Tier
                 naechstesFeld.platziere(neuerHase);
             }
             Position neuePosition = naechstesFeld.freieNachbarposition(gibPosition());
-            // nur in das nächste Feld setzen, wenn eine Position frei ist
+            // nur in das nï¿½chste Feld setzen, wenn eine Position frei ist
             if(neuePosition != null) {
                 setzePosition(neuePosition);
                 naechstesFeld.platziere(this);
             }
             else {
-                // weder Bleiben noch Gehen möglich - Überpopulation - kein Platz 
+                // weder Bleiben noch Gehen mï¿½glich - ï¿½berpopulation - kein Platz 
                 setzeGestorben();
             }
         }
     }
     
     /**
-     * Erhöhe das Alter dieses Hasen.
-     * Dies kann zu seinem Tod führen.
+     * Erhï¿½he das Alter dieses Hasen.
+     * Dies kann zu seinem Tod fï¿½hren.
      */
     private void alterErhoehen()
     {
@@ -80,7 +80,7 @@ public class Hase extends Tier
     }
     
     /**
-     * Gebäre Nachwuchs, wenn dieser Hase gebärfähig ist.
+     * Gebï¿½re Nachwuchs, wenn dieser Hase gebï¿½rfï¿½hig ist.
      * @return die Anzahl der Neugeborenen (kann Null sein).
      */
     private int gebaereNachwuchs()
@@ -97,7 +97,7 @@ public class Hase extends Tier
         return "Hase, Alter " + gibAlter();
     }
     /**
-     * Ein Hase kann gebären, wenn er das gebärfähige Alter
+     * Ein Hase kann gebï¿½ren, wenn er das gebï¿½rfï¿½hige Alter
      * erreicht hat.
      */
     private boolean kannGebaeren()

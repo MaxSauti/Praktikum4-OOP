@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 /**
  * Eine grafische Ansicht des Simulationsfeldes.
- * Die Ansicht zeigt für jede Position ein gefärbtes Rechteck,
- * das den jeweiligen Inhalt repräsentiert, und hat eine
+ * Die Ansicht zeigt fï¿½r jede Position ein gefï¿½rbtes Rechteck,
+ * das den jeweiligen Inhalt reprï¿½sentiert, und hat eine
  * vorgebene Hintergrundfarbe.
- * Die Farben für die verschiedenen Tierarten können mit
+ * Die Farben fï¿½r die verschiedenen Tierarten kï¿½nnen mit
  * der Methode setzeFarbe definiert werden.
  * 
  * @author David J. Barnes and Michael Kolling
@@ -15,10 +15,10 @@ import java.util.HashMap;
  */
 public class Simulationsansicht extends JFrame
 {
-    // Die Farbe für leere Positionen
+    // Die Farbe fï¿½r leere Positionen
     private static final Color LEER_FARBE = Color.white;
 
-    // Die Farbe für Objekte ohne definierte Farbe
+    // Die Farbe fï¿½r Objekte ohne definierte Farbe
     private static final Color UNDEF_FARBE = Color.gray;
 
     private final String SCHRITT_PREFIX = "Schritt: ";
@@ -26,7 +26,7 @@ public class Simulationsansicht extends JFrame
     private JLabel schrittLabel, population;
     private Feldansicht feldansicht;
     
-    // Eine Map für die Farben der Simulationsteilnehmer
+    // Eine Map fï¿½r die Farben der Simulationsteilnehmer
     // (Abbildung Tierklasse -> Farbe)
     private HashMap farben;
     // Ein Statistik-Objekt zur Berechnung und Speicherung
@@ -34,14 +34,14 @@ public class Simulationsansicht extends JFrame
     private FeldStatistik stats;
 
     /**
-     * Erzeuge eine Ansicht mit der gegebenen Breite und Höhe.
+     * Erzeuge eine Ansicht mit der gegebenen Breite und Hï¿½he.
      */
     public Simulationsansicht(int hoehe, int breite)
     {
         stats = new FeldStatistik();
         farben = new HashMap();
 
-        setTitle("Simulation von Füchsen und Hasen");
+        setTitle("Simulation von FÃ¼chsen, Hasen und JÃ¤gern");
         schrittLabel = new JLabel(SCHRITT_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
         
@@ -58,7 +58,7 @@ public class Simulationsansicht extends JFrame
     }
     
     /**
-     * Definiere eine Farbe für die gegebene Tierklasse.
+     * Definiere eine Farbe fï¿½r die gegebene Tierklasse.
      */
     public void setzeFarbe(Class tierklasse, Color farbe)
     {
@@ -66,13 +66,13 @@ public class Simulationsansicht extends JFrame
     }
 
     /**
-     * Liefere die definierte Farbe für eine gegebene Tierklasse.
+     * Liefere die definierte Farbe fï¿½r eine gegebene Tierklasse.
      */
     private Color gibFarbe(Class tierklasse)
     {
         Color farbe = (Color)farben.get(tierklasse);
         if(farbe == null) {
-            // für die gegebene Klasse ist keine Farbe definiert
+            // fï¿½r die gegebene Klasse ist keine Farbe definiert
             return UNDEF_FARBE;
         }
         else {
@@ -126,10 +126,10 @@ public class Simulationsansicht extends JFrame
      * Liefere eine grafische Ansicht eines rechteckigen Feldes.
      * Dies ist eine geschachtelte Klasse (eine Klasse, die
      * innerhalb einer anderen Klasse definiert ist), die eine
-     * eigene grafische Komponente für die Benutzungsschnittstelle
+     * eigene grafische Komponente fï¿½r die Benutzungsschnittstelle
      * definiert. Diese Komponente zeigt das Feld an.
-     * Dies ist fortgeschrittene GUI-Technik - Sie können sie
-     * für Ihr Projekt ignorieren, wenn Sie wollen.
+     * Dies ist fortgeschrittene GUI-Technik - Sie kï¿½nnen sie
+     * fï¿½r Ihr Projekt ignorieren, wenn Sie wollen.
      */
     private class Feldansicht extends JPanel
     {
@@ -152,7 +152,7 @@ public class Simulationsansicht extends JFrame
         }
 
         /**
-         * Der GUI-Verwaltung mitteilen, wie groß wir sein wollen.
+         * Der GUI-Verwaltung mitteilen, wie groï¿½ wir sein wollen.
          * Der Name der Methode ist durch die GUI-Verwaltung festgelegt.
          */
         public Dimension getPreferredSize()
@@ -163,12 +163,12 @@ public class Simulationsansicht extends JFrame
         
         /**
          * Bereite eine neue Zeichenrunde vor. Da die Komponente
-         * in der Größe geändert werden kann, muss der Maßstab neu
+         * in der Grï¿½ï¿½e geï¿½ndert werden kann, muss der Maï¿½stab neu
          * berechnet werden.
          */
         public void zeichnenVorbereiten()
         {
-            if(! groesse.equals(getSize())) {  // Größe wurde geändert...
+            if(! groesse.equals(getSize())) {  // Grï¿½ï¿½e wurde geï¿½ndert...
                 groesse = getSize();
                 feldImage = feldansicht.createImage(groesse.width, groesse.height);
                 g = feldImage.getGraphics();
@@ -195,7 +195,7 @@ public class Simulationsansicht extends JFrame
         }
 
         /**
-         * Die Komponente für die Feldansicht muss erneut angezeigt
+         * Die Komponente fï¿½r die Feldansicht muss erneut angezeigt
          * werden. Kopiere das interne Image in die Anzeige.
          * Der Name der Methode ist durch die GUI-Verwaltung festgelegt.
          */
