@@ -64,7 +64,7 @@ public class Hase extends Tier
                 // weder Bleiben noch Gehen m�glich - �berpopulation - kein Platz 
                 setzeGestorben();
             }
-            /* Test für Jäger
+            /*// Test für Jäger
             setzePosition(gibPosition());
             naechstesFeld.platziere(this);
             */

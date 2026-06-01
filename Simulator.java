@@ -185,6 +185,12 @@ public class Simulator
                     akteure.add(hunt);
                     feld.platziere(hunt);
                 }
+                // Test für Jäger
+                /*else {
+                Hase hase = new Hase(true);
+                hase.setzePosition(zeile, spalte);
+                akteure.add(hase);
+                feld.platziere(hase); } */
                 // ansonsten die Position leer lassen
             }
         }

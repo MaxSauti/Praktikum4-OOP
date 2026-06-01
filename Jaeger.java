@@ -19,12 +19,9 @@ public class Jaeger extends Akteur{
         naechstesFeld.platziere(this);
 
         Random rand = new Random();
-        int range = rand.nextInt(5);
+        int range = rand.nextInt(7) + 1;
+
         //Gib Schüsse ab
-        Position[] dead = new Position[8];
-        for (int i = 0; i < dead.length; i++){
-            dead[i] = aktuellesFeld.zufaelligeNachbarposition(gibPosition());
-        }
 
         Iterator tmp = aktuellesFeld.nachbarnInRange(gibPosition(), range);
         while (tmp.hasNext()){

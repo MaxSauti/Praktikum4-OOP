@@ -166,34 +166,43 @@ public class Feld
 
     public Iterator nachbarnInRange(Position pos, int range) {
         LinkedList positionen = new LinkedList();
+        Random rand = new Random();
+
         int zeile = pos.gibZeile();
         int spalte = pos.gibSpalte();
 
         int naechsteZeile;
         int naechsteSpalte;
 
-        for (int i = 1; i <= range; i++){
+        int randRange = rand.nextInt(range);
+        for (int i = 1; i <= randRange; i++){
             naechsteZeile = pos.gibZeile() + i;
             if (naechsteZeile > gibTiefe() - 1){
                 break;
             }
             positionen.add(new Position(naechsteZeile, spalte));
         }
-        for (int i = 1; i <= range; i++){
+
+        randRange = rand.nextInt(range);
+        for (int i = 1; i <= randRange; i++){
             naechsteSpalte = pos.gibSpalte() + i;
             if (naechsteSpalte > gibBreite() - 1){
                 break;
             }
             positionen.add(new Position(zeile, naechsteSpalte));
         }
-        for (int i = 1; i <= range; i++){
+
+        randRange = rand.nextInt(range);
+        for (int i = 1; i <= randRange; i++){
             naechsteZeile = pos.gibZeile() - i;
             if (naechsteZeile < 0){
                 break;
             }
             positionen.add(new Position(naechsteZeile, spalte));
         }
-        for (int i = 1; i <= range; i++){
+
+        randRange = rand.nextInt(range);
+        for (int i = 1; i <= randRange; i++){
             naechsteSpalte = pos.gibSpalte() - i;
             if (naechsteSpalte < 0){
                 break;
