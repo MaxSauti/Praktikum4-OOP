@@ -37,16 +37,5 @@ public class Jaeger extends Akteur{
                 ((Akteur) opfer).setzeGestorben();
             }
         }
-
-
-        for (Position pos : dead) {
-            if (pos != null) {
-                Object opfer = aktuellesFeld.gibObjektAn(pos);
-                if (opfer instanceof Jaeger || opfer == null) {
-                    continue;
-                }
-                ((Akteur) opfer).setzeGestorben();
-            }
-        }
     }
 }

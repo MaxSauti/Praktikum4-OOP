@@ -172,28 +172,28 @@ public class Feld
         int naechsteZeile;
         int naechsteSpalte;
 
-        for (int i = 0; i <= range; i++){
+        for (int i = 1; i <= range; i++){
             naechsteZeile = pos.gibZeile() + i;
             if (naechsteZeile > gibTiefe() - 1){
                 break;
             }
             positionen.add(new Position(naechsteZeile, spalte));
         }
-        for (int i = 0; i <= range; i++){
+        for (int i = 1; i <= range; i++){
             naechsteSpalte = pos.gibSpalte() + i;
             if (naechsteSpalte > gibBreite() - 1){
                 break;
             }
             positionen.add(new Position(zeile, naechsteSpalte));
         }
-        for (int i = 0; i <= range; i++){
+        for (int i = 1; i <= range; i++){
             naechsteZeile = pos.gibZeile() - i;
             if (naechsteZeile < 0){
                 break;
             }
             positionen.add(new Position(naechsteZeile, spalte));
         }
-        for (int i = 0; i <= range; i++){
+        for (int i = 1; i <= range; i++){
             naechsteSpalte = pos.gibSpalte() - i;
             if (naechsteSpalte < 0){
                 break;
