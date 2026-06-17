@@ -49,10 +49,13 @@ public class Hase extends Tier
         if(istLebendig()) {
             int geburten = gebaereNachwuchs();
             for(int b = 0; b < geburten; b++) {
-                Hase neuerHase = new Hase(false);
-                neueTiere.add(neuerHase);
-                neuerHase.setzePosition(naechstesFeld.zufaelligeNachbarposition(gibPosition()));
-                naechstesFeld.platziere(neuerHase);
+                Position gebPos = naechstesFeld.freieNachbarposition(gibPosition());
+                if (gebPos != null) {
+                    Hase neuerHase = new Hase(false);
+                    neueTiere.add(neuerHase);
+                    neuerHase.setzePosition(gebPos);
+                    naechstesFeld.platziere(neuerHase);
+                }
             }
             Position neuePosition = naechstesFeld.freieNachbarposition(gibPosition());
             // nur in das n�chste Feld setzen, wenn eine Position frei ist

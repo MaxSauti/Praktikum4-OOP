@@ -10,6 +10,14 @@ public class Jaeger extends Akteur{
         super();
     }
 
+
+    /**
+     * Agiere Methode des Jägers. Der Jäger sucht sich alle Nachbarfelder die in der Range liegen und
+     * tötet die Tiere auf diesen Feldern
+     * @param aktuellesFeld Das aktuelle Spielfeld
+     * @param naechstesFeld Das Feld des nächsten Schrittes
+     * @param neueTiere     Liste der neugeborenen Tiere, bei Jäger unnötig
+     */
     public void agiere(Feld aktuellesFeld, Feld naechstesFeld, List neueTiere) {
         /*
         Random rand = new Random();

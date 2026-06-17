@@ -52,7 +52,10 @@ public class Feld
     public void platziere(Akteur akteur)
     {
         Position position = akteur.gibPosition();
-        feld[position.gibZeile()][position.gibSpalte()] = akteur;
+        //feld[position.gibZeile()][position.gibSpalte()] = akteur;
+        if (feld[position.gibZeile()][position.gibSpalte()] == null) {
+            feld[position.gibZeile()][position.gibSpalte()] = akteur;
+        }
     }
     
     /**
@@ -164,6 +167,13 @@ public class Feld
         return positionen.iterator();
     }
 
+    /**
+     * Gibt einen Iterator über die Nachbarn einer Position in der Range zurück.
+     * Dabei besteht eine 50% Chance, dass eine Richtung ausgewählt wird
+     * @param pos   Position von der die NAchbarn gesucht werden
+     * @param range Range in der die Nachbarn gesucht werden
+     * @return      Iterator über alle zufällig gewählten Nachbarn
+     */
     public Iterator nachbarnInRange(Position pos, int range) {
         LinkedList positionen = new LinkedList();
         Random rand = new Random();

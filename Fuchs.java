@@ -4,41 +4,41 @@ import java.util.Random;
 
 /**
  * Ein simples Modell eines Fuchses.
- * Füchse altern, bewegen sich, fressen Hasen und sterben.
+ * Fï¿½chse altern, bewegen sich, fressen Hasen und sterben.
  * 
  * @author David J. Barnes and Michael Kolling
  * @version 2003-04-16
  */
 public class Fuchs extends Tier
 {
-    // Eigenschaften aller Füchse (statische Datenfelder)
+    // Eigenschaften aller Fï¿½chse (statische Datenfelder)
     
-    // Das Alter, in dem ein Fuchs gebärfähig wird.
+    // Das Alter, in dem ein Fuchs gebï¿½rfï¿½hig wird.
     private static final int GEBAER_ALTER = 10;
-    // Das Höchstalter eines Fuchses.
+    // Das Hï¿½chstalter eines Fuchses.
     private static final int MAX_ALTER = 150;
-    // Die Wahrscheinlichkeit, mit der ein Fuchs Nachwuchs gebärt.
+    // Die Wahrscheinlichkeit, mit der ein Fuchs Nachwuchs gebï¿½rt.
     private static final double GEBAER_WAHRSCHEINLICHKEIT = 0.09;
-    // Die maximale Größe eines Wurfes (Anzahl der Jungen).
+    // Die maximale Grï¿½ï¿½e eines Wurfes (Anzahl der Jungen).
     private static final int MAX_WURFGROESSE = 3;
-    // Der Nährwert eines einzelnen Hasen. Letztendlich ist
+    // Der Nï¿½hrwert eines einzelnen Hasen. Letztendlich ist
     // dies die Anzahl der Schritte, die ein Fuchs bis zur
-    //nächsten Mahlzeit laufen kann.
+    //nï¿½chsten Mahlzeit laufen kann.
     private static final int HASEN_NAEHRWERT = 4;
 	// Ein Zufallsgenerator, der die Geburten beeinflusst.
     private static final Random rand = new Random();
     
     // Individuelle Eigenschaften (Instanzfelder).
 
-    // Der Futter-Level, der durch das Fressen von Hasen erhöht wird.
+    // Der Futter-Level, der durch das Fressen von Hasen erhï¿½ht wird.
     private int futterLevel;
 
     /**
      * Erzeuge einen Fuchs. Ein Fuchs wird entweder neu geboren
-     * (Alter 0 Jahre und nicht hungrig) oder mit einem zufälligen Alter.
+     * (Alter 0 Jahre und nicht hungrig) oder mit einem zufï¿½lligen Alter.
      * 
      * @param zufaelligesAlter falls true, hat der neue Fuchs ein 
-     *        zufälliges Alter und einen zufälligen Futter-Level.
+     *        zufï¿½lliges Alter und einen zufï¿½lligen Futter-Level.
      */
     public Fuchs(boolean zufaelligesAlter)
     {
@@ -55,25 +55,28 @@ public class Fuchs extends Tier
     
     /**
      * Das was ein Fuchs die meiste Zeit tut: er jagt Hasen.
-     * Dabei kann er Nachwuchs gebären, vor Hunger sterben oder
-     * an Altersschwäche.
+     * Dabei kann er Nachwuchs gebï¿½ren, vor Hunger sterben oder
+     * an Altersschwï¿½che.
      */
     public void agiere(Feld aktuellesFeld, Feld naechstesFeld, List neueTiere)
     {
         alterErhoehen();
         hungerVergroessern();
         if(istLebendig()) {
-            // neue Füchse werden in Nachbarpositionen geboren.
+            // neue Fï¿½chse werden in Nachbarpositionen geboren.
             int geburten = gebaereNachwuchs();
             for(int b = 0; b < geburten; b++) {
-                Fuchs neuerFuchs = new Fuchs(false);
-                neueTiere.add(neuerFuchs);
-                neuerFuchs.setzePosition(naechstesFeld.zufaelligeNachbarposition(gibPosition()));
-                naechstesFeld.platziere(neuerFuchs);
+                Position gebPos = naechstesFeld.freieNachbarposition(gibPosition());
+                if (gebPos != null) {
+                    Fuchs neuerFuchs = new Fuchs(false);
+                    neueTiere.add(neuerFuchs);
+                    neuerFuchs.setzePosition(gebPos);
+                    naechstesFeld.platziere(neuerFuchs);
+                }
             }
             // In die Richtung bewegen, in der Futter gefunden wurde.
             Position neuePosition = findeNahrung(aktuellesFeld, gibPosition());
-            if(neuePosition == null) {  // kein Futter - zufällig bewegen
+            if(neuePosition == null) {  // kein Futter - zufï¿½llig bewegen
                 neuePosition = naechstesFeld.freieNachbarposition(gibPosition());
             }
             if(neuePosition != null) {
@@ -81,15 +84,15 @@ public class Fuchs extends Tier
                 naechstesFeld.platziere(this); // setzt die Position
             }
             else {
-                // weder Bleiben noch Gehen möglich - Überpopulation - kein Platz 
+                // weder Bleiben noch Gehen mï¿½glich - ï¿½berpopulation - kein Platz 
                 setzeGestorben();
             }
         }
     }
     
     /**
-     * Erhöhe das Alter dieses Fuchses. Dies kann zu seinem
-     * Tod führen.
+     * Erhï¿½he das Alter dieses Fuchses. Dies kann zu seinem
+     * Tod fï¿½hren.
      */
     private void alterErhoehen()
     {
@@ -100,8 +103,8 @@ public class Fuchs extends Tier
     }
     
     /**
-     * Vergrößere den Hunger dieses Fuchses. Dies kann zu seinem
-     * Tode führen.
+     * Vergrï¿½ï¿½ere den Hunger dieses Fuchses. Dies kann zu seinem
+     * Tode fï¿½hren.
      */
     private void hungerVergroessern()
     {
@@ -137,7 +140,7 @@ public class Fuchs extends Tier
     }
         
     /**
-     * Gebäre Nachwuchs, wenn dieser Fuchs gebärfähig ist.
+     * Gebï¿½re Nachwuchs, wenn dieser Fuchs gebï¿½rfï¿½hig ist.
      * @return die Anzahl der Neugeborenen (kann Null sein).
      */
     private int gebaereNachwuchs()
@@ -158,7 +161,7 @@ public class Fuchs extends Tier
     }
 
     /**
-     * Ein Fuchs kann gebären, wenn er das gebärfähige
+     * Ein Fuchs kann gebï¿½ren, wenn er das gebï¿½rfï¿½hige
      * Alter erreicht hat.
      */
     private boolean kannGebaeren()
