@@ -17,9 +17,9 @@ public class Simulator
     // Die privaten static final Variablen definieren
     // Konfigurationsinformationen f�r die Simulation.
     // Die Standardbreite f�r ein Feld.
-    private static final int STANDARD_BREITE = 50;
+    private static final int STANDARD_BREITE = 100;
     // Die Standardtiefe f�r ein Feld.
-    private static final int STANDARD_TIEFE = 50;
+    private static final int STANDARD_TIEFE = 100;
     // Die Wahrscheinlichkeit f�r die Geburt eines Fuchses an
     // einer beliebigen Position im Feld.
     private static final double FUCHSGEBURT_WAHRSCHEINLICH = 0.02;
@@ -185,12 +185,12 @@ public class Simulator
                     akteure.add(hunt);
                     feld.platziere(hunt);
                 }
-                // Test für Jäger
-                /*else {
+                /*// Test für Jäger
+                else {
                 Hase hase = new Hase(true);
                 hase.setzePosition(zeile, spalte);
                 akteure.add(hase);
-                feld.platziere(hase); } */
+                feld.platziere(hase); }*/
                 // ansonsten die Position leer lassen
             }
         }

@@ -174,42 +174,50 @@ public class Feld
         int naechsteZeile;
         int naechsteSpalte;
 
-        int randRange = rand.nextInt(range);
-        for (int i = 1; i <= randRange; i++){
-            naechsteZeile = pos.gibZeile() + i;
-            if (naechsteZeile > gibTiefe() - 1){
-                break;
+        //int randRange = rand.nextInt(range);
+        int shoot = rand.nextInt(2);
+        if (shoot == 1) {
+            for (int i = 1; i <= range; i++) {
+                naechsteZeile = pos.gibZeile() + i;
+                if (naechsteZeile > gibTiefe() - 1) {
+                    break;
+                }
+                positionen.add(new Position(naechsteZeile, spalte));
             }
-            positionen.add(new Position(naechsteZeile, spalte));
         }
 
-        randRange = rand.nextInt(range);
-        for (int i = 1; i <= randRange; i++){
-            naechsteSpalte = pos.gibSpalte() + i;
-            if (naechsteSpalte > gibBreite() - 1){
-                break;
+        shoot = rand.nextInt(2);
+        if (shoot == 1) {
+            for (int i = 1; i <= range; i++) {
+                naechsteSpalte = pos.gibSpalte() + i;
+                if (naechsteSpalte > gibBreite() - 1) {
+                    break;
+                }
+                positionen.add(new Position(zeile, naechsteSpalte));
             }
-            positionen.add(new Position(zeile, naechsteSpalte));
         }
 
-        randRange = rand.nextInt(range);
-        for (int i = 1; i <= randRange; i++){
-            naechsteZeile = pos.gibZeile() - i;
-            if (naechsteZeile < 0){
-                break;
+        shoot = rand.nextInt(2);
+        if (shoot == 1) {
+            for (int i = 1; i <= range; i++) {
+                naechsteZeile = pos.gibZeile() - i;
+                if (naechsteZeile < 0) {
+                    break;
+                }
+                positionen.add(new Position(naechsteZeile, spalte));
             }
-            positionen.add(new Position(naechsteZeile, spalte));
         }
 
-        randRange = rand.nextInt(range);
-        for (int i = 1; i <= randRange; i++){
-            naechsteSpalte = pos.gibSpalte() - i;
-            if (naechsteSpalte < 0){
-                break;
+        shoot = rand.nextInt(2);
+        if (shoot == 1) {
+            for (int i = 1; i <= range; i++) {
+                naechsteSpalte = pos.gibSpalte() - i;
+                if (naechsteSpalte < 0) {
+                    break;
+                }
+                positionen.add(new Position(zeile, naechsteSpalte));
             }
-            positionen.add(new Position(zeile, naechsteSpalte));
         }
-
 
         return positionen.iterator();
     }
