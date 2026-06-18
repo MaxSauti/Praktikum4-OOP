@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Jaeger extends Akteur{
 
+    private static int kills;
     private final int range = 5;
 
     public Jaeger () {
@@ -34,6 +35,7 @@ public class Jaeger extends Akteur{
                     continue;
                 }
                 opfer.setzeGestorben();
+                kills++;
             }
         }
 
@@ -45,5 +47,9 @@ public class Jaeger extends Akteur{
             setzePosition(gibPosition());
         }
         naechstesFeld.platziere(this);
+    }
+
+    public static int getKills() {
+        return kills;
     }
 }

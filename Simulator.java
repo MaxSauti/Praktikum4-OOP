@@ -17,9 +17,9 @@ public class Simulator
     // Die privaten static final Variablen definieren
     // Konfigurationsinformationen f�r die Simulation.
     // Die Standardbreite f�r ein Feld.
-    private static final int STANDARD_BREITE = 100;
+    private static final int STANDARD_BREITE = 50;
     // Die Standardtiefe f�r ein Feld.
-    private static final int STANDARD_TIEFE = 100;
+    private static final int STANDARD_TIEFE = 50;
     // Die Wahrscheinlichkeit f�r die Geburt eines Fuchses an
     // einer beliebigen Position im Feld.
     private static final double FUCHSGEBURT_WAHRSCHEINLICH = 0.02;
@@ -46,6 +46,7 @@ public class Simulator
     {
     	Simulator sim = new Simulator();
         sim.starteLangeSimulation();
+        System.out.println("Kills der Jäger: " + Jaeger.getKills());
     }
 
     
@@ -104,7 +105,7 @@ public class Simulator
         for(int schritt = 1; schritt <= schritte && ansicht.istAktiv(feld); schritt++) {
             simuliereEinenSchritt();
             try {
-                Thread.sleep(100);
+                Thread.sleep(0);
             } catch (InterruptedException ignored) {
             }
 
